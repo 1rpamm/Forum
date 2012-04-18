@@ -1,0 +1,12 @@
+# -*- encoding : utf-8 -*-
+class Post < ActiveRecord::Base
+  #belongs_to :user
+  belongs_to :topic
+  belongs_to :user
+  validates :body, :presence => true
+  validates :user_id, :presence => true
+
+  def edit?(user)
+    user && (user_id==user.id || user.privilege?)
+  end
+end

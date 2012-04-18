@@ -1,0 +1,38 @@
+.header
+  Список пользователей
+
+%table.users.sort.tablesorter
+  %thead
+    %tr
+      %th
+      -%w(id email name role male birthday).each do |attr|
+        %th=User.human_attribute_name(attr)
+      %th Статус
+  %tbody
+    -@users.each do |user|
+      %tr
+        %td
+          -if user.avatar?
+            =image_tag user.avatar.url(:thumb)
+          -elsif user.male
+            =image_tag 'thumb/default_avatar_male.jpg', :alt => user.name
+          -else
+            =image_tag 'thumb/default_avatar_female.jpg', :alt => user.name
+        %td=user.id
+        %td=user.email
+        %td=user.name
+        %td
+          =user.human_role
+          .hide.data_num=user.role
+        %td=user.sex
+        %td
+          .hide.data_num=user.birthday.year*100+user.birthday.month*10+user.birthday.day
+          -if user.birthday.present?
+            =l user.birthday, :format => :long
+
+        %td
+          -if user.deleted_at.present?
+            .deleted Удален
+          -else
+            =link_to "Удалить", user, :confirm => "Вы уверены?", :method => :delete
+

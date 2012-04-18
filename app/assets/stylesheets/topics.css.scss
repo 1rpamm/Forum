@@ -1,0 +1,41 @@
+.topic {
+  .topic_head {
+    font-size: 9pt;
+    font-family: 'Monaco','Liberation Mono','Droid Sans Mono','Ubuntu Mono','Lucida Console','Helvetica Neue',monospace;
+    position: relative;
+    .time {
+      bottom: 0;
+      color: #999999;
+      left: 600px;
+      position: absolute;
+    }
+    .id {
+      bottom: 0;
+      color: #0055CC;
+      margin: 0 -8px !important;
+      padding: 0 8px !important;
+      position: absolute;
+      right: 8px;
+    }
+  }
+  .topic_body {
+    .title {
+      font-size: 14pt !important;
+      padding: 5px 0px;
+    }
+    background: none repeat scroll 0 0 #FFFFFF;
+    border: 1px dotted #BBBBBB;
+    border-radius: 3px 3px 3px 3px;
+    font-family: 'Monaco','Liberation Mono','Droid Sans Mono','Ubuntu Mono','Lucida Console','Helvetica Neue',monospace;
+    font-size: 10pt;
+    line-height: 1.3em;
+    padding: 7px 8px 5px;
+  }
+  padding: 10px 0px;
+}
+            
+p {
+  font-family: 'Monaco','Liberation Mono','Droid Sans Mono','Ubuntu Mono','Lucida Console','Helvetica Neue',monospace;
+  font-size: 10pt;
+  line-height: 1.3em;
+}

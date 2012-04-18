@@ -1,0 +1,29 @@
+.post
+  .post_head
+    -if @topic && post.edit?(current_user)
+      =link_to "Редактровать", edit_topic_post_path(@topic,post)
+      =link_to "Удалить", [@topic,post], :confirm => "Вы уверены?", :method => :delete
+    .time=l post.created_at, :format => :long
+    .id ##{post.id}
+  .post_body
+    .avatar
+      .nickname
+        =post.user ? post.user.name : nil
+      .sex
+        Пол:
+        =post.user.male ? "муж" : "жен"
+      .age
+        Возраст:
+        =post.user.birthday.blank? ? '' : "#{post.user.age} лет"
+      -if post.user.avatar?
+        =image_tag post.user.avatar.url(:medium)
+      -elsif post.user.male
+        =image_tag 'medium/default_avatar_male.jpg', :alt => post.user.name
+      -else
+        =image_tag 'medium/default_avatar_female.jpg', :alt => post.user.name
+    .post_content
+      =simple_format(show_post_body(post))
+      .sign
+        =simple_format(post.user.sign)
+    .clear
+.clear

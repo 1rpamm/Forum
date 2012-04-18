@@ -1,0 +1,7 @@
+.header
+  Тэги:
+%ul
+  -@tags.each do |tag|
+    %li
+      =link_to tag.name, show_tag_path(:name => tag.name)
+      ="(#{tag.posts.size})"

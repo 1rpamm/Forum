@@ -1,0 +1,12 @@
+.topic
+  .topic_head
+    -if topic.edit?(current_user)
+      =link_to 'Редактировать', edit_topic_path(topic)
+      =link_to 'Удалить', topic, :confirm => 'Вы уверены?', :method => :delete
+    .time
+      =l topic.updated_at, :format => :long
+    .id
+      =link_to "##{topic.id}", topic
+  .topic_body
+    .title=link_to topic.name, topic
+    .text=simple_format(topic.description)

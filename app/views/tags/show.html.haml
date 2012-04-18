@@ -1,0 +1,4 @@
+.header
+  #{@tag.name}
+-@tag.posts.each do |post|
+  =render 'posts/post', :post => post

@@ -1,0 +1,52 @@
+.edit
+  -if @user.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@user.errors.count, "error")} prohibited this topic from being saved:"
+      %ul
+        -@user.errors.full_messages.each do |msg|
+          %li= msg
+.header Редактрирование профиля
+
+%h4 Личная информация
+=form_for @user, :url => update_sex_path do |f|
+  .field
+    =f.radio_button :male, true
+    =f.label :male_1, "Мужской"
+    =f.radio_button :male, false
+    =f.label :male_0, "Женский"
+  .actions=f.submit "Изменить пол"
+=form_for @user, :url => update_birthday_path do |f|
+  .field
+    =f.date_select :birthday, { :start_year => 1900, :end_year => Time.now.year, :include_blank => true}, :class => "auto_width"
+  .actions=f.submit "Изменить дату"
+
+%h4 Аватар
+-if @user.avatar?
+  .avatar=image_tag @user.avatar.url(:original)
+-elsif @user.male
+  .avatar=image_tag 'original/default_avatar_male.jpg'
+-else
+  .avatar=image_tag 'original/default_avatar_female.jpg'
+=form_for @user, :url => update_avatar_path do |f|
+  .field
+    =f.label :avatar
+    %br
+    =f.file_field :avatar
+  .actions=f.submit
+
+%h4 Сменить пароль
+=form_for @user, :url => update_password_path do |f|
+  .field
+    =f.password_field :old_password, :placeholder => "Текущий пароль"
+    %br
+    =f.password_field :password, :placeholder => "Новый пароль"
+    %br
+    =f.password_field :password_confirmation, :placeholder => "Повторите новый пароль"
+  .actions=f.submit "Изменить пароль"
+
+%h4 Подпись
+=form_for @user, :url => update_sign_path do |f|
+  .field
+    =f.text_area :sign
+    %br
+    =f.submit "Изменить подпись"

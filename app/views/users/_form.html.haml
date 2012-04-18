@@ -1,0 +1,24 @@
+=form_for @user do |f|
+  -if @user.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@user.errors.count, "error")} prohibited this topic from being saved:"
+      %ul
+        - @user.errors.full_messages.each do |msg|
+          %li= msg
+  .field
+    = f.label :name
+    %br
+    = f.text_field :name, :placeholder => "Login"
+  .field
+    = f.label :email
+    %br
+    = f.email_field :email, :placeholder => "your@email.com"
+  .field
+    = f.label :password
+    %br
+    = f.password_field :password, :placeholder => "Password"
+  .field
+    = f.label :password_confirmation
+    %br
+    = f.password_field :password_confirmation, :placeholder => "Repeat password"
+  .actions=f.submit

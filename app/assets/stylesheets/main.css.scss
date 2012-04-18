@@ -1,0 +1,75 @@
+@import "_variables.css.scss";
+
+html {
+  background: url(background.jpg) no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+body {
+  color: #111;
+  font-family: verdana, helvetica, arial;
+  font-size: 14px;
+}
+
+a {
+  border-radius: 3px;
+  color: $link_color;
+  display: inline-block;
+  text-decoration: none;
+
+}
+
+a:hover{
+  background: none repeat scroll 0 0 #F3F3F3;
+  border-radius: 3px;
+  color: #CC0000 !important;
+}
+
+.clear {
+  clear: both;
+  height: 0;
+  overflow: hidden;
+}
+
+#container {
+  width: 75%;
+  margin: 0 auto;
+  padding: 10px 20px;
+}
+
+.flash_error {
+  background: #731b1b;
+  font-size: 10px;
+  color: #fff;
+  margin: 5px 0px;
+}
+
+.flash_notice {
+  background: #259e2f;
+  font-size: 10px;
+  color: #fff;
+  margin: 5px 0px;
+}
+
+#user_info {
+  font-size: 14px;
+  color: $gray;
+  .span {
+    float: right;
+    margin: 0px;
+    padding: 0px;
+  }
+}
+
+.header {
+  font-size: 20px;
+}
+
+.gray {
+  color: $gray;
+  padding: 10px;
+}
+

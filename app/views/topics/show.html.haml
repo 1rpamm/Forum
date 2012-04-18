@@ -1,0 +1,13 @@
+.header
+  =link_to "Ответить", new_topic_post_path(@topic)
+.topic_post
+  .title
+    =@topic.name
+  .gray_post
+    =simple_format(@topic.description)
+%br
+-@posts.each do |post|
+  =render 'posts/post', :post => post
+
+=paginate @posts
+

@@ -1,0 +1,23 @@
+#user_info
+  =link_to "На главную", root_path
+  \|
+  =link_to "Тэги", "/tags"
+  -if logged_in?
+    -if current_user.admin?
+      \|
+      =link_to "Пользователи", users_path
+  .span
+    -if logged_in?
+      -if current_user.avatar?
+        %span=image_tag current_user.avatar.url(:thumb)
+      -elsif current_user.male
+        %span=image_tag 'thumb/default_avatar_male.jpg', :alt => current_user.name
+      -else
+        %span=image_tag 'thumb/default_avatar_female.jpg', :alt => current_user.name
+      =link_to current_user.name, profile_path
+      \|
+      =link_to "Выход", logout_path
+    -else
+      =link_to "Войти", new_session_path
+      \|
+      =link_to "Регистрация", new_user_path

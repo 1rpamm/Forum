@@ -1,0 +1,7 @@
+.header
+  = link_to 'Новая тема', new_topic_path
+.topics
+  -@topics.each do |topic|
+    = render 'topic', :topic=>topic
+
+
